@@ -209,13 +209,98 @@
             font-weight: 600;
         }
 
+        /* Mobile-first responsive improvements */
         @media (max-width: 480px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 24px;
+            }
+
+            .gift-section {
+                padding: 16px;
+                border-radius: 12px;
+                margin-bottom: 20px;
+            }
+
+            .gift-title {
+                font-size: 1.15rem;
+                flex-wrap: wrap;
+            }
+
+            .progress-container {
+                height: 32px;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 4px;
+                font-size: 0.85rem;
+            }
+
+            .contributors-table th,
+            .contributors-table td {
+                padding: 8px 6px;
+                font-size: 0.9rem;
+            }
+
+            .contributors-table th:last-child,
+            .contributors-table td:last-child {
+                width: 40px;
+                text-align: center;
+            }
+
             .add-form {
                 flex-direction: column;
             }
 
+            .add-form input {
+                padding: 14px 12px;
+                font-size: 16px; /* Prevents iOS zoom on focus */
+            }
+
             .add-form input[type="number"] {
                 max-width: 100%;
+            }
+
+            .add-form button {
+                padding: 14px 20px;
+                font-size: 16px;
+            }
+
+            .delete-btn {
+                font-size: 1.4rem;
+                padding: 8px 12px;
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            .empty-state {
+                padding: 16px;
+                font-size: 0.9rem;
+            }
+
+            .goal-reached {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .delete-btn {
+                opacity: 1;
+            }
+
+            .add-form button:hover {
+                transform: none;
+            }
+
+            .add-form button:active {
+                transform: scale(0.98);
             }
         }
     </style>
