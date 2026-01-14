@@ -414,7 +414,13 @@
             try {
                 showLoading(true);
                 const response = await fetch(`${API_URL}?action=get`);
-                data = await response.json();
+                const result = await response.json();
+                console.log('Loaded data:', result);
+
+                // Ensure arrays exist
+                data.grisha = result.grisha || [];
+                data.liza = result.liza || [];
+
                 updateUI('grisha');
                 updateUI('liza');
             } catch (error) {
@@ -517,6 +523,8 @@
                     amountInput.value = '';
                     nameInput.focus();
 
+                    // Wait for Google Sheets to process
+                    await new Promise(r => setTimeout(r, 1500));
                     await loadData();
                 } catch (error) {
                     console.error('Error adding contributor:', error);
@@ -540,6 +548,7 @@
                 });
 
                 await fetch(`${API_URL}?${params}`);
+                await new Promise(r => setTimeout(r, 1500));
                 await loadData();
             } catch (error) {
                 console.error('Error removing contributor:', error);
